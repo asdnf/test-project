@@ -1,42 +1,15 @@
 package org.test.sample;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.io.IOException;
+
 public class Main {
 
-    public static void main(String... args) {
+    public static void main(String... args) throws IOException {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("/ctx.xml");
-        IComponent c = (IComponent) ctx.getBean("ccc");
-        assert c != null;
-        c.test();
+        System.out.println(((RestDataProvider) ctx.getBean("restDataProvider")).getData());
     }
-
-    public interface IComponent {
-        void test();
-    }
-
-    static class CComponent implements IComponent {
-        public CComponent() {
-            System.out.println(this.getClass().getCanonicalName());
-        }
-
-        public void test() {
-            System.out.println("stub");
-        }
-    }
-
-    static class CCComponent extends CComponent {
-
-        @Autowired
-        private CComponent compo;
-
-        @Override
-        public void test() {
-            System.out.println(compo.getClass().getCanonicalName());
-        }
-    }
-
 
 }

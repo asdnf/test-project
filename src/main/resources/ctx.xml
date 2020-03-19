@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
 
-    <bean class="org.test.sample.Main.CComponent" id="cc"/>
-    <bean class="org.test.sample.Main.CCComponent" id="ccc"/>
 
-    <context:annotation-config/>
+    <bean class="org.test.sample.UriProviderImpl" id="uriProvider">
+        <constructor-arg name="url" value="https://raw.githubusercontent.com/asdnf/test-project/master/pom.xml"/>
+    </bean>
+
+    <bean class="org.test.sample.RestDataProvider$HttpClientComponentFactory" id="httpClientComponentFactory"/>
+
+    <bean class="org.test.sample.RestDataProvider" id="restDataProvider">
+        <constructor-arg name="urlProvider" ref="uriProvider"/>
+        <constructor-arg name="httpClientComponentFactory" ref="httpClientComponentFactory"/>
+    </bean>
 
 </beans>
