@@ -40,7 +40,21 @@ public class RestDataProviderTest {
         HttpResponse response = new BasicHttpResponse(new BasicStatusLine(
                 new ProtocolVersion("http", 1, 2), 201, "the reason"));
 
+        BasicHttpEntity httpEntity = new BasicHttpEntity();
+        InputStream is = new ByteArrayInputStream("pillow".getBytes());
+        httpEntity.setContent(is);
+        response.setEntity(httpEntity);
 
+        when(uriProvider.getUrl()).thenReturn("");
+
+        when(httpClientComponentFactory.getStringBuilder()).thenReturn(new StringBuilder());
+
+        when(httpClientComponentFactory.getBufferedReader(is)).thenReturn(
+                new BufferedReader(new InputStreamReader(is)));
+
+        doReturn(response).when(client).execute(any(HttpUriRequest.class));
+
+        System.out.println(restDataProvider.getData());
     }
 
 }
