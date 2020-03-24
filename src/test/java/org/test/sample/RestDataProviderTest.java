@@ -52,7 +52,9 @@ public class RestDataProviderTest {
         when(httpClientComponentFactory.getBufferedReader(is)).thenReturn(
                 new BufferedReader(new InputStreamReader(is)));
 
-        doReturn(response).when(client).execute(any(HttpUriRequest.class));
+        when(client.execute(any(HttpUriRequest.class))).thenReturn(response);
+
+//        doReturn(response).when(client).execute(any(HttpUriRequest.class));
 
         System.out.println(restDataProvider.getData());
     }
