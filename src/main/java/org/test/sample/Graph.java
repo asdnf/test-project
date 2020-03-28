@@ -3,13 +3,14 @@ package org.test.sample;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import java.io.IOException;
+import javax.swing.*;
 
-public class Main {
+public class Graph {
 
-    public static void main(String... args) throws IOException {
+    public static void main(String... args) {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("/ctx.xml");
-        System.out.println(((RestDataProvider) ctx.getBean("restDataProvider")).getData());
+        JFrame frame = (JFrame) ctx.getBean("frame");
+        frame.setVisible(true);
     }
 
 }

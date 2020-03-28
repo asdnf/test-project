@@ -5,15 +5,61 @@
         http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
 
 
-    <bean class="org.test.sample.UriProviderImpl" id="uriProvider">
-        <constructor-arg name="url" value="https://raw.githubusercontent.com/asdnf/test-project/master/pom.xml"/>
+    <!--    <bean class="org.test.sample.UriProviderImpl" id="uriProvider">-->
+    <!--        <constructor-arg name="url" value="https://raw.githubusercontent.com/asdnf/test-project/master/pom.xml"/>-->
+    <!--    </bean>-->
+
+    <!--    <bean class="org.test.sample.RestDataProvider$HttpClientComponentFactory" id="httpClientComponentFactory"/>-->
+
+    <!--    <bean class="org.test.sample.RestDataProvider" id="restDataProvider">-->
+    <!--        <constructor-arg name="urlProvider" ref="uriProvider"/>-->
+    <!--        <constructor-arg name="httpClientComponentFactory" ref="httpClientComponentFactory"/>-->
+    <!--    </bean>-->
+
+    <bean class="java.awt.Point" id="frameLocation">
+        <constructor-arg name="x" value="300"/>
+        <constructor-arg name="y" value="300"/>
     </bean>
 
-    <bean class="org.test.sample.RestDataProvider$HttpClientComponentFactory" id="httpClientComponentFactory"/>
+    <bean class="java.awt.Dimension" id="frameSize">
+        <constructor-arg name="width" value="400"/>
+        <constructor-arg name="height" value="300"/>
+    </bean>
 
-    <bean class="org.test.sample.RestDataProvider" id="restDataProvider">
-        <constructor-arg name="urlProvider" ref="uriProvider"/>
-        <constructor-arg name="httpClientComponentFactory" ref="httpClientComponentFactory"/>
+    <bean class="java.awt.Dimension" id="minimumFrameSize">
+        <constructor-arg name="width" value="150"/>
+        <constructor-arg name="height" value="150"/>
+    </bean>
+
+    <bean class="javax.swing.JFrame" id="frame">
+        <property name="defaultCloseOperation" value="2"/>
+        <property name="location" ref="frameLocation"/>
+        <property name="size" ref="frameSize"/>
+        <property name="minimumSize" ref="minimumFrameSize"/>
+        <property name="layout" ref="frameLayout"/>
+    </bean>
+
+    <bean class="javax.swing.JButton" id="button">
+        <constructor-arg name="text" value="draw"/>
+    </bean>
+
+    <bean class="javax.swing.JPanel" id="panel">
+        <property name="border" ref="sceneBorder"/>
+    </bean>
+
+    <bean class="javax.swing.border.TitledBorder" id="sceneBorder">
+        <constructor-arg name="title" value="scene"/>
+    </bean>
+
+    <bean class="java.awt.BorderLayout" id="frameLayout">
+        <property name="hgap" value="5"/>
+        <property name="vgap" value="5"/>
+    </bean>
+
+    <bean class="org.test.sample.FramePostProcessor">
+        <constructor-arg name="button" ref="button"/>
+        <constructor-arg name="panel" ref="panel"/>
+        <constructor-arg name="frame" ref="frame"/>
     </bean>
 
 </beans>
