@@ -1,0 +1,26 @@
+[INFO] com.avaya.ocp.db:test-sample:jar:12.0-SNAPSHOT
+[INFO] +- org.springframework:spring-context:jar:5.2.4.RELEASE:compile
+[INFO] |  +- org.springframework:spring-aop:jar:5.2.4.RELEASE:compile
+[INFO] |  +- org.springframework:spring-beans:jar:5.2.4.RELEASE:compile
+[INFO] |  +- org.springframework:spring-core:jar:5.2.4.RELEASE:compile
+[INFO] |  |  \- org.springframework:spring-jcl:jar:5.2.4.RELEASE:compile
+[INFO] |  \- org.springframework:spring-expression:jar:5.2.4.RELEASE:compile
+[INFO] +- org.apache.httpcomponents:httpclient:jar:4.3.6:compile
+[INFO] |  +- org.apache.httpcomponents:httpcore:jar:4.3.3:compile
+[INFO] |  +- commons-logging:commons-logging:jar:1.1.3:compile
+[INFO] |  \- commons-codec:commons-codec:jar:1.6:compile
+[INFO] +- org.mockito:mockito-all:jar:1.9.5:test
+[INFO] \- junit:junit:jar:4.13:test
+[INFO]    \- org.hamcrest:hamcrest-core:jar:1.3:test
+
+/c/Users/44586/.m2/repository/org/springframework/spring-aop/5.2.4.RELEASE/spring-aop-5.2.4.RELEASE.jar
+/c/Users/44586/.m2/repository/org/springframework/spring-beans/5.2.4.RELEASE/spring-beans-5.2.4.RELEASE.jar
+/c/Users/44586/.m2/repository/org/springframework/spring-context/5.2.4.RELEASE/spring-context-5.2.4.RELEASE.jar
+/c/Users/44586/.m2/repository/org/springframework/spring-core/5.2.4.RELEASE/spring-core-5.2.4.RELEASE.jar
+/c/Users/44586/.m2/repository/org/springframework/spring-expression/5.2.4.RELEASE/spring-expression-5.2.4.RELEASE.jar
+/c/Users/44586/.m2/repository/org/springframework/spring-jcl/5.2.4.RELEASE/spring-jcl-5.2.4.RELEASE.jar
+
+/c/Users/44586/.m2/repository/org/apache/httpcomponents/httpclient/4.3.6/httpclient-4.3.6.jar
+/c/Users/44586/.m2/repository/org/apache/httpcomponents/httpcore/4.3.3/httpcore-4.3.3.jar
+/c/Users/44586/.m2/repository/commons-logging/commons-logging/1.1.3/commons-logging-1.1.3.jar
+/c/Users/44586/.m2/repository/commons-codec/commons-codec/1.6/commons-codec-1.6.jar
