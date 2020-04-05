@@ -2,3 +2,4 @@
 .idea
 target/
 test-sample.iml
+.vagrant
