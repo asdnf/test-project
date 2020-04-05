@@ -45,6 +45,11 @@ Vagrant.configure("2") do |config|
     mvn clean
     cd src/main/java/org/test/sample
 
+    # Указываем системе, что запускаем оболочку Shell для запуска кода на гостевом ПК. Имя оболочки build-manual. privileged - Админ - false. <<-SCRIPT начало блока скрипта, который нужно выполнить
+    # Переходит в папку vagrant
+    # Очистка maven (удаление всех ранее созданных файлов .class, .jar, каталога target и др. файлов)  --- Зачем нужен переходит в папку vagrant и чистка здесь, если потом переходим в sample?
+    # Переход в папку sample
+
     javac -cp \
 /home/vagrant/.m2/repository/org/springframework/spring-aop/5.2.4.RELEASE/spring-aop-5.2.4.RELEASE.jar\
 :/home/vagrant/.m2/repository/org/springframework/spring-beans/5.2.4.RELEASE/spring-beans-5.2.4.RELEASE.jar\
@@ -58,6 +63,20 @@ Vagrant.configure("2") do |config|
 :/home/vagrant/.m2/repository/commons-codec/commons-codec/1.6/commons-codec-1.6.jar\
  *.java
 
+ # Запускаем компилятор. -cp указывает на то, что мы хотим достучаться до пути класса .Class или java. Т.е. система ищет эти классы в jar архивах
+ # Указываем пути библиотек, необходимых для зависимостей, которые указали в pom maven'a:
+ # AOP - Аспектно-ориентированное программирование?
+ # Bean объекты
+ # Контекст окружение
+ # Spring core (ядро), весь Spring?
+ # Язык выражений
+ # Логгирование Spring
+ # Библиотека Commons Logging API
+ # httpclient
+ # httpcore
+ # Логирование (создание логов)
+ # тип java файл с кодом
+
     cd /vagrant
     mkdir -p tmp
     cd tmp
@@ -66,7 +85,15 @@ Vagrant.configure("2") do |config|
     
     mkdir META-INF
     cd META-INF
-    
+
+    # Переходит в папку vagrant
+    # Создаем папку tmp. -p проверяет, существуетли такая папка уже
+    # Переходит в папку tmp
+    # Создаем папку sample в org/test/. Так же -p проверяет, если такая
+    # Перемещаем (move) файлы *.class из /src/main/java/org/test/sample/  в   org/test/sample/ в папкe tmp
+    # Создаем папку META-INF в tmp
+    # Переходим в META-INF
+
     echo "Main-Class: org.test.sample.Main" > MANIFEST.MF
     echo "Class-Path: META-INF/lib/commons-codec-1.6.jar META-INF/lib/spring-beans-5.2.4.RELEASE.jar \
 META-INF/lib/commons-logging-1.1.3.jar META-INF/lib/spring-context-5.2.4.RELEASE.jar META-INF/lib/httpclient-4.3.6.jar \
@@ -75,6 +102,10 @@ META-INF/lib/spring-aop-5.2.4.RELEASE.jar META-INF/lib/spring-jcl-5.2.4.RELEASE.
     
     mkdir lib
     cd lib
+
+    # Создаем файл MANIFEST.MF и выводим в нем сообщение Main-Class: org.test.sample.Main
+    # с echo "Class-Path... начинается ошибка и эти строки система в MANIFEST.MF не добавляет
+
 
     cp /home/vagrant/.m2/repository/org/springframework/spring-aop/5.2.4.RELEASE/spring-aop-5.2.4.RELEASE.jar .
     cp /home/vagrant/.m2/repository/org/springframework/spring-beans/5.2.4.RELEASE/spring-beans-5.2.4.RELEASE.jar .
@@ -88,10 +119,18 @@ META-INF/lib/spring-aop-5.2.4.RELEASE.jar META-INF/lib/spring-jcl-5.2.4.RELEASE.
     cp /home/vagrant/.m2/repository/commons-codec/commons-codec/1.6/commons-codec-1.6.jar .
     cd ../..
 
+    # копирование jar архивов в папку на 2м уровне?, т.е. /home/vagrant/??
+
     cp -r ../src/main/resources/* .
+
+    #  копирование подкаталогов и все файллв в подкаталогах /src/main/resources/ в lib
 
     zip -r9 runnable.jar *
 
+    #  заархивировать с максимальной степеью сжатия (9) и запускаем
+
   SHELL
+
+  # Оболочка SHELL заканчивается/закрывается
 
 end
